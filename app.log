@@ -1,0 +1,126 @@
+2026-02-17 15:43:23,869 - src.repositories.books - books.py:37 - create_table - INFO - Таблица успешно создана
+2026-02-17 15:43:23,870 - src.main - main.py:36 - lifespan - INFO - Сервер начал работу
+2026-02-17 15:44:05,047 - src.repositories.books - books.py:69 - get_by_id - INFO - Книга с id 1 найдена
+2026-02-17 15:44:05,048 - src.services.books - books.py:18 - create_book - INFO - Книга создана с id 1
+2026-02-17 15:44:05,064 - src.repositories.books - books.py:69 - get_by_id - INFO - Книга с id 2 найдена
+2026-02-17 15:44:05,064 - src.services.books - books.py:18 - create_book - INFO - Книга создана с id 2
+2026-02-17 15:44:05,073 - src.repositories.books - books.py:58 - get_all - INFO - Найдено книг: 2
+2026-02-17 15:44:05,074 - src.services.books - books.py:24 - get_all_books - INFO - Найдено книг: 2
+2026-02-17 15:44:05,083 - src.repositories.books - books.py:82 - delete - WARNING - Книга с id 8 не найдена, удаление не выполнено
+2026-02-17 15:44:05,084 - src.services.books - books.py:42 - delete - WARNING - Книга с id 8 не найдена, удаление не выполнено
+2026-02-17 15:44:28,190 - src.repositories.books - books.py:58 - get_all - INFO - Найдено книг: 2
+2026-02-17 15:44:28,190 - src.services.books - books.py:24 - get_all_books - INFO - Найдено книг: 2
+2026-02-17 15:45:08,498 - src.repositories.books - books.py:58 - get_all - INFO - Найдено книг: 2
+2026-02-17 15:45:08,499 - src.services.books - books.py:24 - get_all_books - INFO - Найдено книг: 2
+2026-02-17 15:45:50,256 - src.repositories.books - books.py:69 - get_by_id - INFO - Книга с id 3 найдена
+2026-02-17 15:45:50,257 - src.services.books - books.py:18 - create_book - INFO - Книга создана с id 3
+2026-02-17 15:45:52,809 - src.repositories.books - books.py:69 - get_by_id - INFO - Книга с id 4 найдена
+2026-02-17 15:45:52,809 - src.services.books - books.py:18 - create_book - INFO - Книга создана с id 4
+2026-02-17 15:45:58,356 - src.repositories.books - books.py:58 - get_all - INFO - Найдено книг: 4
+2026-02-17 15:45:58,356 - src.services.books - books.py:24 - get_all_books - INFO - Найдено книг: 4
+2026-02-17 15:46:10,001 - src.repositories.books - books.py:69 - get_by_id - INFO - Книга с id 3 найдена
+2026-02-17 15:46:10,002 - src.services.books - books.py:32 - get_book - INFO - Книга с id 3 найдена
+2026-02-17 15:46:17,356 - src.repositories.books - books.py:80 - delete - INFO - Книга с id 4 удалена
+2026-02-17 15:46:17,356 - src.services.books - books.py:40 - delete - INFO - Книга с id 4 удалена
+2026-02-17 21:30:58,099 - src.repositories.books - books.py:37 - create_table - INFO - Таблица успешно создана
+2026-02-17 21:30:58,099 - src.main - main.py:20 - lifespan - INFO - Сервер начал работу
+2026-02-17 21:32:03,613 - src.main - main.py:22 - lifespan - INFO - Сервер завершил работу
+2026-02-17 21:32:09,139 - src.repositories.books - books.py:37 - create_table - INFO - Таблица успешно создана
+2026-02-17 21:32:09,139 - src.main - main.py:20 - lifespan - INFO - Сервер начал работу
+2026-02-17 21:32:31,290 - src.repositories.books - books.py:69 - get_by_id - INFO - Книга с id 1 найдена
+2026-02-17 21:32:31,291 - src.services.books - books.py:32 - get_book - INFO - Книга с id 1 найдена
+2026-02-17 21:32:46,405 - src.repositories.books - books.py:58 - get_all - INFO - Найдено книг: 3
+2026-02-17 21:32:46,406 - src.services.books - books.py:24 - get_all_books - INFO - Найдено книг: 3
+2026-02-17 21:33:05,102 - src.repositories.books - books.py:69 - get_by_id - INFO - Книга с id 1 найдена
+2026-02-17 21:33:05,102 - src.services.books - books.py:32 - get_book - INFO - Книга с id 1 найдена
+2026-02-17 21:33:09,197 - src.repositories.books - books.py:69 - get_by_id - INFO - Книга с id 1 найдена
+2026-02-17 21:33:09,198 - src.services.books - books.py:32 - get_book - INFO - Книга с id 1 найдена
+2026-02-17 21:34:14,655 - src.repositories.books - books.py:69 - get_by_id - INFO - Книга с id 2 найдена
+2026-02-17 21:34:14,655 - src.services.books - books.py:32 - get_book - INFO - Книга с id 2 найдена
+2026-02-17 21:34:15,511 - src.repositories.books - books.py:69 - get_by_id - INFO - Книга с id 2 найдена
+2026-02-17 21:34:15,511 - src.services.books - books.py:32 - get_book - INFO - Книга с id 2 найдена
+2026-02-17 21:34:16,320 - src.repositories.books - books.py:69 - get_by_id - INFO - Книга с id 2 найдена
+2026-02-17 21:34:16,321 - src.services.books - books.py:32 - get_book - INFO - Книга с id 2 найдена
+2026-02-17 21:34:16,859 - src.repositories.books - books.py:69 - get_by_id - INFO - Книга с id 2 найдена
+2026-02-17 21:34:16,860 - src.services.books - books.py:32 - get_book - INFO - Книга с id 2 найдена
+2026-02-17 21:34:17,047 - src.repositories.books - books.py:69 - get_by_id - INFO - Книга с id 2 найдена
+2026-02-17 21:34:17,048 - src.services.books - books.py:32 - get_book - INFO - Книга с id 2 найдена
+2026-02-18 08:12:24,582 - src.repositories.books - books.py:37 - create_table - INFO - Таблица успешно создана
+2026-02-18 08:12:24,582 - src.main - main.py:20 - lifespan - INFO - Сервер начал работу
+2026-02-18 08:12:55,524 - src.repositories.books - books.py:58 - get_all - INFO - Найдено книг: 3
+2026-02-18 08:12:55,525 - src.services.books - books.py:24 - get_all_books - INFO - Найдено книг: 3
+2026-02-18 08:13:44,277 - src.repositories.books - books.py:69 - get_by_id - INFO - Книга с id 5 найдена
+2026-02-18 08:13:44,278 - src.services.books - books.py:18 - create_book - INFO - Книга создана с id 5
+2026-02-18 08:14:14,263 - src.main - main.py:22 - lifespan - INFO - Сервер завершил работу
+2026-02-18 08:35:32,949 - src.repositories.books - books.py:37 - create_table - INFO - Таблица успешно создана
+2026-02-18 08:35:32,949 - src.main - main.py:20 - lifespan - INFO - Сервер начал работу
+2026-02-18 08:35:54,233 - src.repositories.books - books.py:58 - get_all - INFO - Найдено книг: 4
+2026-02-18 08:35:54,233 - src.services.books - books.py:24 - get_all_books - INFO - Найдено книг: 4
+2026-02-18 08:36:22,216 - src.repositories.books - books.py:69 - get_by_id - INFO - Книга с id 1 найдена
+2026-02-18 08:36:22,216 - src.services.books - books.py:32 - get_book - INFO - Книга с id 1 найдена
+2026-02-18 08:38:21,279 - src.repositories.books - books.py:80 - delete - INFO - Книга с id 1 удалена
+2026-02-18 08:38:21,280 - src.services.books - books.py:40 - delete - INFO - Книга с id 1 удалена
+2026-02-18 08:38:38,620 - src.repositories.books - books.py:69 - get_by_id - INFO - Книга с id 2 найдена
+2026-02-18 08:38:38,620 - src.services.books - books.py:48 - update - INFO - Книга с id 2, обновилась
+2026-02-18 08:38:40,821 - src.repositories.books - books.py:69 - get_by_id - INFO - Книга с id 2 найдена
+2026-02-18 08:38:40,821 - src.services.books - books.py:48 - update - INFO - Книга с id 2, обновилась
+2026-02-18 08:38:41,814 - src.repositories.books - books.py:69 - get_by_id - INFO - Книга с id 2 найдена
+2026-02-18 08:38:41,814 - src.services.books - books.py:48 - update - INFO - Книга с id 2, обновилась
+2026-02-18 08:38:42,307 - src.repositories.books - books.py:69 - get_by_id - INFO - Книга с id 2 найдена
+2026-02-18 08:38:42,308 - src.services.books - books.py:48 - update - INFO - Книга с id 2, обновилась
+2026-02-18 08:38:42,805 - src.repositories.books - books.py:69 - get_by_id - INFO - Книга с id 2 найдена
+2026-02-18 08:38:42,806 - src.services.books - books.py:48 - update - INFO - Книга с id 2, обновилась
+2026-02-18 08:38:50,507 - src.repositories.books - books.py:58 - get_all - INFO - Найдено книг: 3
+2026-02-18 08:38:50,507 - src.services.books - books.py:24 - get_all_books - INFO - Найдено книг: 3
+2026-02-18 08:42:01,192 - src.repositories.books - books.py:71 - get_by_id - WARNING - Книга с id 1 не найдена
+2026-02-18 08:42:01,192 - src.services.books - books.py:34 - get_book - WARNING - Книга с id 1 не найдена
+2026-02-18 08:42:08,025 - src.repositories.books - books.py:69 - get_by_id - INFO - Книга с id 2 найдена
+2026-02-18 08:42:08,026 - src.services.books - books.py:32 - get_book - INFO - Книга с id 2 найдена
+2026-02-18 08:42:09,381 - src.repositories.books - books.py:69 - get_by_id - INFO - Книга с id 2 найдена
+2026-02-18 08:42:09,382 - src.services.books - books.py:32 - get_book - INFO - Книга с id 2 найдена
+2026-02-18 08:45:33,671 - src.repositories.books - books.py:69 - get_by_id - INFO - Книга с id 2 найдена
+2026-02-18 08:45:33,672 - src.services.books - books.py:32 - get_book - INFO - Книга с id 2 найдена
+2026-02-18 08:48:58,824 - src.repositories.books - books.py:69 - get_by_id - INFO - Книга с id 2 найдена
+2026-02-18 08:48:58,824 - src.services.books - books.py:32 - get_book - INFO - Книга с id 2 найдена
+2026-02-18 08:52:25,219 - src.repositories.books - books.py:69 - get_by_id - INFO - Книга с id 3 найдена
+2026-02-18 08:52:25,219 - src.services.books - books.py:32 - get_book - INFO - Книга с id 3 найдена
+2026-02-18 08:52:38,248 - src.main - main.py:22 - lifespan - INFO - Сервер завершил работу
+2026-02-18 08:52:39,934 - src.repositories.books - books.py:37 - create_table - INFO - Таблица успешно создана
+2026-02-18 08:52:39,935 - src.main - main.py:20 - lifespan - INFO - Сервер начал работу
+2026-02-18 08:52:45,226 - src.repositories.books - books.py:69 - get_by_id - INFO - Книга с id 2 найдена
+2026-02-18 08:52:45,226 - src.services.books - books.py:32 - get_book - INFO - Книга с id 2 найдена
+2026-02-18 08:55:02,843 - src.repositories.books - books.py:69 - get_by_id - INFO - Книга с id 2 найдена
+2026-02-18 08:55:02,843 - src.services.books - books.py:32 - get_book - INFO - Книга с id 2 найдена
+2026-02-18 08:56:00,219 - src.main - main.py:22 - lifespan - INFO - Сервер завершил работу
+2026-02-18 08:56:02,051 - src.repositories.books - books.py:37 - create_table - INFO - Таблица успешно создана
+2026-02-18 08:56:02,051 - src.main - main.py:20 - lifespan - INFO - Сервер начал работу
+2026-02-18 08:56:06,972 - src.repositories.books - books.py:71 - get_by_id - WARNING - Книга с id 1 не найдена
+2026-02-18 08:56:06,972 - src.services.books - books.py:34 - get_book - WARNING - Книга с id 1 не найдена
+2026-02-18 08:56:14,982 - src.repositories.books - books.py:58 - get_all - INFO - Найдено книг: 3
+2026-02-18 08:56:14,982 - src.services.books - books.py:24 - get_all_books - INFO - Найдено книг: 3
+2026-02-18 08:56:23,693 - src.repositories.books - books.py:69 - get_by_id - INFO - Книга с id 2 найдена
+2026-02-18 08:56:23,693 - src.services.books - books.py:32 - get_book - INFO - Книга с id 2 найдена
+2026-02-18 09:00:48,653 - src.repositories.books - books.py:69 - get_by_id - INFO - Книга с id 2 найдена
+2026-02-18 09:00:48,653 - src.services.books - books.py:32 - get_book - INFO - Книга с id 2 найдена
+2026-02-18 09:01:08,469 - src.repositories.books - books.py:69 - get_by_id - INFO - Книга с id 2 найдена
+2026-02-18 09:01:08,469 - src.services.books - books.py:32 - get_book - INFO - Книга с id 2 найдена
+2026-02-18 09:13:09,933 - src.main - main.py:22 - lifespan - INFO - Сервер завершил работу
+2026-02-18 09:13:11,231 - src.repositories.books - books.py:37 - create_table - INFO - Таблица успешно создана
+2026-02-18 09:13:11,231 - src.main - main.py:20 - lifespan - INFO - Сервер начал работу
+2026-02-18 09:13:18,838 - src.repositories.books - books.py:69 - get_by_id - INFO - Книга с id 3 найдена
+2026-02-18 09:13:18,838 - src.services.books - books.py:32 - get_book - INFO - Книга с id 3 найдена
+2026-02-18 09:17:02,773 - src.main - main.py:22 - lifespan - INFO - Сервер завершил работу
+2026-02-18 09:17:04,756 - src.repositories.books - books.py:37 - create_table - INFO - Таблица успешно создана
+2026-02-18 09:17:04,757 - src.main - main.py:20 - lifespan - INFO - Сервер начал работу
+2026-02-18 09:17:25,853 - src.repositories.books - books.py:69 - get_by_id - INFO - Книга с id 2 найдена
+2026-02-18 09:17:25,853 - src.services.books - books.py:32 - get_book - INFO - Книга с id 2 найдена
+2026-02-18 09:17:30,713 - src.repositories.books - books.py:69 - get_by_id - INFO - Книга с id 2 найдена
+2026-02-18 09:17:30,713 - src.services.books - books.py:32 - get_book - INFO - Книга с id 2 найдена
+2026-02-18 09:19:36,677 - src.main - main.py:22 - lifespan - INFO - Сервер завершил работу
+2026-02-18 09:20:48,606 - src.repositories.books - books.py:37 - create_table - INFO - Таблица успешно создана
+2026-02-18 09:20:48,606 - src.main - main.py:20 - lifespan - INFO - Сервер начал работу
+2026-02-18 09:20:53,303 - src.repositories.books - books.py:69 - get_by_id - INFO - Книга с id 2 найдена
+2026-02-18 09:20:53,303 - src.services.books - books.py:32 - get_book - INFO - Книга с id 2 найдена
+2026-02-18 09:22:31,631 - src.repositories.books - books.py:69 - get_by_id - INFO - Книга с id 2 найдена
+2026-02-18 09:22:31,631 - src.services.books - books.py:32 - get_book - INFO - Книга с id 2 найдена
+2026-02-18 09:22:37,646 - src.main - main.py:22 - lifespan - INFO - Сервер завершил работу
