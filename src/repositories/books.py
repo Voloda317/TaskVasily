@@ -1,7 +1,6 @@
 import sqlite3
 from contextlib import contextmanager
-from typing import List, Optional
-from src.models.models import Book, BookUpdate, BookCreate, BookOut
+from src.models.models import BookOut
 import logging
 
 logger = logging.getLogger(__name__)
@@ -65,7 +64,7 @@ class BookRepository:
                 (book_id,)
             ).fetchone()
             if row:
-                book = Book(**row)
+                book = BookOut(**row)
                 logger.info(f'Книга с id {book_id} найдена')
                 return book
             logger.warning(f'Книга с id {book_id} не найдена')

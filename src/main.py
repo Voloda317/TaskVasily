@@ -31,29 +31,31 @@ async def get_books():
 async def create_book(book: BookCreate):
     new_book = service.create_book(book.model_dump())
     if new_book is None:
-        raise HTTPException(status_code=500, detail="Failed to create book")
+        logger.error("Не удалось создать книгу (сервис вернул None)")
     return new_book
 
 @app.get('/books/{book_id}', response_model=BookOut)
 async def get_book(book_id: int):
+    logger.info(f'Начинаем работу с поиск книги по id')
     book = service.get_book(book_id)
     if book is None:
-        raise HTTPException(status_code=404, detail="Book not found")
+        logger.warning(f'У нас ошибка')
     return book
 
 @app.patch('/books/{book_id}', response_model=BookOut)
 async def update_book(book_id: int, book_update: BookUpdate):
     update_data = book_update.model_dump(exclude_unset=True)
     if not update_data:
-        raise HTTPException(status_code=400, detail="No fields to update")
+        logger.warning("Попытка обновления без полей")
     updated_book = service.update(book_id, update_data)
     if updated_book is None:
-        raise HTTPException(status_code=404, detail="Book not found")
+        logger.warning(f"Книга с id={book_id} не найдена для обновления")
     return updated_book
 
 @app.delete('/books/{book_id}')
 async def delete_book(book_id: int):
+    logger.info(f"Попытка удаления книги id={book_id}")
     deleted = service.delete(book_id)
     if not deleted:
-        raise HTTPException(status_code=404, detail="Book not found")
+        logger.warning(f"Книга с id={book_id} не найдена для удаления")
     return {"deleted": True}

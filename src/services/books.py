@@ -1,6 +1,5 @@
 from src.repositories.books import BookRepository
 from src.models.models import Book
-from typing import List, Optional
 import logging
 
 logger = logging.getLogger(__name__)

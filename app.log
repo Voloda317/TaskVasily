@@ -124,3 +124,97 @@
 2026-02-18 09:22:31,631 - src.repositories.books - books.py:69 - get_by_id - INFO - Книга с id 2 найдена
 2026-02-18 09:22:31,631 - src.services.books - books.py:32 - get_book - INFO - Книга с id 2 найдена
 2026-02-18 09:22:37,646 - src.main - main.py:22 - lifespan - INFO - Сервер завершил работу
+2026-02-18 12:14:58,360 - src.repositories.books - books.py:36 - create_table - INFO - Таблица успешно создана
+2026-02-18 12:14:58,361 - src.main - main.py:20 - lifespan - INFO - Сервер начал работу
+2026-02-18 12:15:08,798 - src.main - main.py:39 - get_book - INFO - Начинаем работу с поиск книги по id
+2026-02-18 12:15:08,799 - src.repositories.books - books.py:68 - get_by_id - INFO - Книга с id 2 найдена
+2026-02-18 12:15:08,800 - src.services.books - books.py:31 - get_book - INFO - Книга с id 2 найдена
+2026-02-18 12:15:17,792 - src.repositories.books - books.py:57 - get_all - INFO - Найдено книг: 3
+2026-02-18 12:15:17,792 - src.services.books - books.py:23 - get_all_books - INFO - Найдено книг: 3
+2026-02-18 12:15:29,212 - src.main - main.py:39 - get_book - INFO - Начинаем работу с поиск книги по id
+2026-02-18 12:15:29,213 - src.repositories.books - books.py:68 - get_by_id - INFO - Книга с id 2 найдена
+2026-02-18 12:15:29,214 - src.services.books - books.py:31 - get_book - INFO - Книга с id 2 найдена
+2026-02-18 12:15:44,388 - src.main - main.py:39 - get_book - INFO - Начинаем работу с поиск книги по id
+2026-02-18 12:15:44,388 - src.repositories.books - books.py:68 - get_by_id - INFO - Книга с id 3 найдена
+2026-02-18 12:15:44,389 - src.services.books - books.py:31 - get_book - INFO - Книга с id 3 найдена
+2026-02-20 16:16:02,490 - src.repositories.books - books.py:36 - create_table - INFO - Таблица успешно создана
+2026-02-20 16:16:02,491 - src.main - main.py:20 - lifespan - INFO - Сервер начал работу
+2026-02-20 16:16:11,103 - src.repositories.books - books.py:57 - get_all - INFO - Найдено книг: 3
+2026-02-20 16:16:11,103 - src.services.books - books.py:23 - get_all_books - INFO - Найдено книг: 3
+2026-02-20 16:16:41,627 - src.main - main.py:22 - lifespan - INFO - Сервер завершил работу
+2026-02-20 16:16:47,646 - src.repositories.books - books.py:36 - create_table - INFO - Таблица успешно создана
+2026-02-20 16:16:47,647 - src.main - main.py:20 - lifespan - INFO - Сервер начал работу
+2026-02-20 16:17:06,445 - src.main - main.py:39 - get_book - INFO - Начинаем работу с поиск книги по id
+2026-02-20 16:17:06,446 - src.repositories.books - books.py:70 - get_by_id - WARNING - Книга с id 1 не найдена
+2026-02-20 16:17:06,447 - src.services.books - books.py:33 - get_book - WARNING - Книга с id 1 не найдена
+2026-02-20 16:17:06,447 - src.main - main.py:42 - get_book - WARNING - У нас ошибка
+2026-02-20 16:18:41,213 - src.repositories.books - books.py:57 - get_all - INFO - Найдено книг: 3
+2026-02-20 16:18:41,214 - src.services.books - books.py:23 - get_all_books - INFO - Найдено книг: 3
+2026-02-20 16:20:44,471 - src.main - main.py:39 - get_book - INFO - Начинаем работу с поиск книги по id
+2026-02-20 16:20:44,472 - src.repositories.books - books.py:68 - get_by_id - INFO - Книга с id 2 найдена
+2026-02-20 16:20:44,472 - src.services.books - books.py:31 - get_book - INFO - Книга с id 2 найдена
+2026-02-20 16:21:07,086 - src.main - main.py:39 - get_book - INFO - Начинаем работу с поиск книги по id
+2026-02-20 16:21:07,087 - src.repositories.books - books.py:68 - get_by_id - INFO - Книга с id 2 найдена
+2026-02-20 16:21:07,087 - src.services.books - books.py:31 - get_book - INFO - Книга с id 2 найдена
+2026-02-20 16:21:09,328 - src.main - main.py:39 - get_book - INFO - Начинаем работу с поиск книги по id
+2026-02-20 16:21:09,333 - src.repositories.books - books.py:68 - get_by_id - INFO - Книга с id 2 найдена
+2026-02-20 16:21:09,334 - src.services.books - books.py:31 - get_book - INFO - Книга с id 2 найдена
+2026-02-20 16:21:33,013 - src.main - main.py:39 - get_book - INFO - Начинаем работу с поиск книги по id
+2026-02-20 16:21:33,013 - src.repositories.books - books.py:68 - get_by_id - INFO - Книга с id 2 найдена
+2026-02-20 16:21:33,014 - src.services.books - books.py:31 - get_book - INFO - Книга с id 2 найдена
+2026-02-20 17:18:01,076 - src.main - main.py:39 - get_book - INFO - Начинаем работу с поиск книги по id
+2026-02-20 17:18:01,079 - src.repositories.books - books.py:68 - get_by_id - INFO - Книга с id 2 найдена
+2026-02-20 17:18:01,079 - src.services.books - books.py:31 - get_book - INFO - Книга с id 2 найдена
+2026-02-20 17:19:01,829 - src.main - main.py:22 - lifespan - INFO - Сервер завершил работу
+2026-02-20 17:19:03,264 - src.repositories.books - books.py:36 - create_table - INFO - Таблица успешно создана
+2026-02-20 17:19:03,264 - src.main - main.py:20 - lifespan - INFO - Сервер начал работу
+2026-02-20 17:19:25,984 - src.main - main.py:22 - lifespan - INFO - Сервер завершил работу
+2026-02-20 17:19:26,916 - src.repositories.books - books.py:36 - create_table - INFO - Таблица успешно создана
+2026-02-20 17:19:26,916 - src.main - main.py:20 - lifespan - INFO - Сервер начал работу
+2026-02-20 17:22:33,153 - src.repositories.books - books.py:68 - get_by_id - INFO - Книга с id 6 найдена
+2026-02-20 17:22:33,153 - src.services.books - books.py:17 - create_book - INFO - Книга создана с id 6
+2026-02-20 17:22:33,175 - src.repositories.books - books.py:68 - get_by_id - INFO - Книга с id 7 найдена
+2026-02-20 17:22:33,176 - src.services.books - books.py:17 - create_book - INFO - Книга создана с id 7
+2026-02-20 17:22:33,188 - src.repositories.books - books.py:57 - get_all - INFO - Найдено книг: 5
+2026-02-20 17:22:33,188 - src.services.books - books.py:23 - get_all_books - INFO - Найдено книг: 5
+2026-02-20 17:22:33,201 - src.main - main.py:57 - delete_book - INFO - Попытка удаления книги id=8
+2026-02-20 17:22:33,202 - src.repositories.books - books.py:81 - delete - WARNING - Книга с id 8 не найдена, удаление не выполнено
+2026-02-20 17:22:33,202 - src.services.books - books.py:41 - delete - WARNING - Книга с id 8 не найдена, удаление не выполнено
+2026-02-20 17:22:33,203 - src.main - main.py:60 - delete_book - WARNING - Книга с id=8 не найдена для удаления
+2026-02-20 17:22:33,213 - src.repositories.books - books.py:57 - get_all - INFO - Найдено книг: 5
+2026-02-20 17:22:33,213 - src.services.books - books.py:23 - get_all_books - INFO - Найдено книг: 5
+2026-02-20 17:22:33,220 - src.main - main.py:39 - get_book - INFO - Начинаем работу с поиск книги по id
+2026-02-20 17:22:33,221 - src.repositories.books - books.py:70 - get_by_id - WARNING - Книга с id 13 не найдена
+2026-02-20 17:22:33,221 - src.services.books - books.py:33 - get_book - WARNING - Книга с id 13 не найдена
+2026-02-20 17:22:33,221 - src.main - main.py:42 - get_book - WARNING - У нас ошибка
+2026-02-20 17:25:19,933 - src.repositories.books - books.py:68 - get_by_id - INFO - Книга с id 8 найдена
+2026-02-20 17:25:19,933 - src.services.books - books.py:17 - create_book - INFO - Книга создана с id 8
+2026-02-20 17:25:19,952 - src.repositories.books - books.py:68 - get_by_id - INFO - Книга с id 9 найдена
+2026-02-20 17:25:19,952 - src.services.books - books.py:17 - create_book - INFO - Книга создана с id 9
+2026-02-20 17:25:19,962 - src.repositories.books - books.py:57 - get_all - INFO - Найдено книг: 7
+2026-02-20 17:25:19,962 - src.services.books - books.py:23 - get_all_books - INFO - Найдено книг: 7
+2026-02-20 17:25:19,973 - src.main - main.py:57 - delete_book - INFO - Попытка удаления книги id=8
+2026-02-20 17:25:19,980 - src.repositories.books - books.py:79 - delete - INFO - Книга с id 8 удалена
+2026-02-20 17:25:19,980 - src.services.books - books.py:39 - delete - INFO - Книга с id 8 удалена
+2026-02-20 17:25:19,987 - src.repositories.books - books.py:57 - get_all - INFO - Найдено книг: 6
+2026-02-20 17:25:19,987 - src.services.books - books.py:23 - get_all_books - INFO - Найдено книг: 6
+2026-02-20 17:25:19,996 - src.main - main.py:39 - get_book - INFO - Начинаем работу с поиск книги по id
+2026-02-20 17:25:19,996 - src.repositories.books - books.py:70 - get_by_id - WARNING - Книга с id 13 не найдена
+2026-02-20 17:25:19,997 - src.services.books - books.py:33 - get_book - WARNING - Книга с id 13 не найдена
+2026-02-20 17:25:19,997 - src.main - main.py:42 - get_book - WARNING - У нас ошибка
+2026-02-20 17:25:41,392 - src.repositories.books - books.py:68 - get_by_id - INFO - Книга с id 10 найдена
+2026-02-20 17:25:41,393 - src.services.books - books.py:17 - create_book - INFO - Книга создана с id 10
+2026-02-20 17:25:41,413 - src.repositories.books - books.py:68 - get_by_id - INFO - Книга с id 11 найдена
+2026-02-20 17:25:41,413 - src.services.books - books.py:17 - create_book - INFO - Книга создана с id 11
+2026-02-20 17:25:41,424 - src.repositories.books - books.py:57 - get_all - INFO - Найдено книг: 8
+2026-02-20 17:25:41,424 - src.services.books - books.py:23 - get_all_books - INFO - Найдено книг: 8
+2026-02-20 17:25:41,435 - src.main - main.py:57 - delete_book - INFO - Попытка удаления книги id=8
+2026-02-20 17:25:41,436 - src.repositories.books - books.py:81 - delete - WARNING - Книга с id 8 не найдена, удаление не выполнено
+2026-02-20 17:25:41,436 - src.services.books - books.py:41 - delete - WARNING - Книга с id 8 не найдена, удаление не выполнено
+2026-02-20 17:25:41,436 - src.main - main.py:60 - delete_book - WARNING - Книга с id=8 не найдена для удаления
+2026-02-20 17:25:41,443 - src.repositories.books - books.py:57 - get_all - INFO - Найдено книг: 8
+2026-02-20 17:25:41,444 - src.services.books - books.py:23 - get_all_books - INFO - Найдено книг: 8
+2026-02-20 17:25:41,450 - src.main - main.py:39 - get_book - INFO - Начинаем работу с поиск книги по id
+2026-02-20 17:25:41,450 - src.repositories.books - books.py:70 - get_by_id - WARNING - Книга с id 13 не найдена
+2026-02-20 17:25:41,451 - src.services.books - books.py:33 - get_book - WARNING - Книга с id 13 не найдена
+2026-02-20 17:25:41,451 - src.main - main.py:42 - get_book - WARNING - У нас ошибка
