@@ -6,7 +6,7 @@ from src.repositories.books import BookRepository
 from src.services.books import BookService
 from src.models.models import BookCreate, BookOut, BookUpdate
 
-router = APIRouter(prefix='books', tags=['Books'])
+router = APIRouter(prefix='/books', tags=['Books'])
 
 logger = logging.getLogger(__name__)
 
