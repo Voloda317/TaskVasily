@@ -23,3 +23,8 @@ async def lifespan(app: FastAPI):
 app = FastAPI(lifespan=lifespan, title=settings.APP_TITLE)
 
 app.include_router(books_router)
+
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("src.main:app", host=settings.HOST, port=settings.PORT, reload=True)
