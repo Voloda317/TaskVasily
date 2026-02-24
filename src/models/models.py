@@ -5,7 +5,7 @@ class Book(BaseModel):
     book: str
     author: str
     year: int 
-    publication: str
+    publisher : str
 
 class BookCreate(Book):
     pass
@@ -17,4 +17,4 @@ class BookUpdate(BaseModel):
     book: Optional[str] = None 
     author: Optional[str] = None 
     year: Optional[int] = None 
-    publication: Optional[str] = None 
+    publisher : Optional[str] = None 

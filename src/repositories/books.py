@@ -2,13 +2,14 @@ import sqlite3
 from contextlib import contextmanager
 from src.models.models import BookOut
 import logging
+from typing import Optional
+
+from src.config import settings
 
 logger = logging.getLogger(__name__)
 
-DATABASE_NAME = 'books.db'
-
 class BookRepository:
-    def __init__(self, db_path: str = DATABASE_NAME):
+    def __init__(self, db_path: str = settings.DB_NAME):
         self.db_path = db_path
 
     @contextmanager
@@ -29,7 +30,7 @@ class BookRepository:
                         book TEXT NOT NULL,
                         author TEXT NOT NULL,
                         year INTEGER NOT NULL,
-                        publication TEXT NOT NULL
+                        publisher  TEXT NOT NULL
                     )
                 ''')
                 conn.commit()
@@ -41,26 +42,17 @@ class BookRepository:
         with self.get_connection() as conn:
             cursor = conn.execute(
                 '''
-                INSERT INTO books (book, author, year, publication)
-                VALUES (:book, :author, :year, :publication)
+                INSERT INTO books (book, author, year, publisher )
+                VALUES (:book, :author, :year, :publisher )
                 ''', book_data
             )
             conn.commit()
             return cursor.lastrowid
 
-    def get_all(self):
-        with self.get_connection() as conn:
-            rows = conn.execute(
-                'SELECT id, book, author, year, publication FROM books'
-            ).fetchall()
-            books = [BookOut(**row) for row in rows]
-            logger.info(f'Найдено книг: {len(books)}')
-            return books
-
     def get_by_id(self, book_id: int):
         with self.get_connection() as conn:
             row = conn.execute(
-                'SELECT id, book, author, year, publication FROM books WHERE id = ?',
+                'SELECT id, book, author, year, publisher  FROM books WHERE id = ?',
                 (book_id,)
             ).fetchone()
             if row:
@@ -86,11 +78,31 @@ class BookRepository:
             conn.execute(
                 '''
                 UPDATE books
-                SET book = :book, author = :author, year = :year, publication = :publication
+                SET book = :book, author = :author, year = :year, publisher  = :publisher 
                 WHERE id = :id
                 ''',
                 {**book_data, "id": book_id}
             )
             conn.commit()
             return self.get_by_id(book_id)
-            
+
+    def get_all(self, filters: Optional[dict] = None):
+        with self.get_connection() as conn:
+            sql = 'SELECT id, book, author, year, publisher FROM books'
+            params = []
+            if filters:
+                conds = []
+                for key, val in filters.items():
+                    if key in ('book', 'author', 'publisher'):
+                        conds.append(f"{key} LIKE ?")
+                        params.append(f"%{val}%")
+                    elif key == 'year':
+                        conds.append("year = ?")
+                        params.append(val)
+                    elif key == 'id':
+                        conds.append("id = ?")
+                        params.append(val)
+                if conds:
+                    sql += ' WHERE ' + ' AND '.join(conds)
+            rows = conn.execute(sql, params).fetchall()
+            return [BookOut(**row) for row in rows]

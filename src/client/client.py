@@ -26,6 +26,12 @@ def get_book_by_id(book_id: int):
     response.raise_for_status()
     return response.json()
 
+def search_books(params: dict):
+    """Поиск книг с фильтрами (query parameters)."""
+    response = requests.get(f'{BASE_URL}/books/search', params=params)
+    response.raise_for_status()
+    return response.json()
+
 if __name__ == "__main__":
     book_one = {
         "book": "Преступление и наказание",
@@ -39,24 +45,58 @@ if __name__ == "__main__":
         "year": 1869,
         "publication": "Русский вестник"
     }
+    book_three = {
+        "book": "Анна Каренина",
+        "author": "Лев Толстой",
+        "year": 1877,
+        "publication": "Русский вестник"
+    }
 
     result_one = add_book(book_one)
     result_two = add_book(book_two)
+    result_three = add_book(book_three)
     print('Добавили книги:')
     print_json(result_one)
     print_json(result_two)
+    print_json(result_three)
 
-    print('Все книги после добавления:')
-    print_json(get_all_books())
+    print('\nВсе книги после добавления:')
+    all_books = get_all_books()
+    print_json(all_books)
 
-    # Удаляем книгу с id 8 (измените число, если нужно удалить другую)
-    print('Удаляем книгу с id 8:')
-    print_json(delete_book(8))
 
-    print('Все книги после удаления:')
-    print_json(get_all_books())
+    print('\n=== Тестирование поиска ===')
 
-    # Получаем книгу с id 13 и выводим результат
-    test_result_book_get_id = get_book_by_id(13)
-    print('Книга с id 13:')
-    print_json(test_result_book_get_id)
+    print('\n1. Поиск по автору "Лев Толстой":')
+    found = search_books({"author": "Лев Толстой"})
+    print_json(found)
+
+    print('\n2. Поиск по названию "Преступление":')
+    found = search_books({"book": "Преступление"})
+    print_json(found)
+
+    print('\n3. Поиск по году 1866:')
+    found = search_books({"year": 1866})
+    print_json(found)
+
+    print('\n4. Поиск по издательству "Русский вестник":')
+    found = search_books({"publisher": "Русский вестник"})
+    print_json(found)
+
+    print('\n5. Комбинированный поиск (author=Лев Толстой, year=1869):')
+    found = search_books({"author": "Лев Толстой", "year": 1869})
+    print_json(found)
+
+    print('\n6. Поиск несуществующего автора:')
+    found = search_books({"author": "Неизвестный автор"})
+    print_json(found)  
+
+    if all_books:
+        book_id_to_delete = all_books[0]['id']  
+        print(f'\nУдаляем книгу с id {book_id_to_delete}:')
+        print_json(delete_book(book_id_to_delete))
+
+        print('\nВсе книги после удаления:')
+        print_json(get_all_books())
+    else:
+        print("Нет книг для удаления")

@@ -1,5 +1,4 @@
 from src.repositories.books import BookRepository
-from src.models.models import Book
 import logging
 
 logger = logging.getLogger(__name__)
@@ -16,14 +15,6 @@ class BookService:
         else:
             logger.info(f'Книга создана с id {book_id}')
         return new_book
-
-    def get_all_books(self):
-        books = self.repository.get_all()
-        if books:
-            logger.info(f'Найдено книг: {len(books)}')
-        else:
-            logger.warning('Список книг пуст')
-        return books
 
     def get_book(self, book_id: int):
         book = self.repository.get_by_id(book_id)
@@ -49,3 +40,10 @@ class BookService:
             logger.error(f'Неизвестная ошибка')
         return updates
     
+    def search_for_book(self, filters: dict):
+        filter_book = self.repository.get_all(filters)
+        if filter_book: 
+            logger.info(f'Данные успешно передаются')
+        else:
+            logger.error(f'У нас беда')
+        return filter_book
