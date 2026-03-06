@@ -1,13 +1,16 @@
-from db.database import Work_db
+from db.database import Conect
 
 import logging
 
-bd = Work_db()
 
 logger = logging.getLogger(__name__)
 
 class Book:
-    def add_book(
+    def __init__(self, db: Conect):
+        self.db = db
+
+
+    async def add_book(
         self,
         author_id: int,
         namebook: str,
@@ -15,58 +18,55 @@ class Book:
         pages: int,
         publisher_id: int
         ):
-        with bd.get_conn() as conn:
-            cursor = conn.execute(
+        async for cur in self.db.get_cursor():
+            await cur.execute(
                 '''
                 INSERT INTO books (author_id, namebook, genre, pages, publisher_id)
-                VALUES (?, ?, ?, ?, ?)
+                VALUES (%s, %s, %s, %s, %s)
                 ''', (author_id, namebook, genre, pages, publisher_id)
             )
-            conn.commit()
-            if cursor:
+            if cur:
                 logger.info(f'Книга успешна добавлена')
-                return cursor.lastrowid
+                return cur.lastrowid
             else:
                 logger.error('Проиозошла ошибка')
 
-    def get_by_id(self, book_id: int):
-        with bd.get_conn() as conn:
-            row = conn.execute(
-                'SELECT id, author_id, namebook, genre, pages, publisher_id FROM books WHERE id = ?',
+    async def get_by_id(self, book_id: int):
+        async for cur in self.db.get_cursor():
+            await cur.execute(
+                'SELECT id, author_id, namebook, genre, pages, publisher_id FROM books WHERE id = %s',
                 (book_id,)
             ).fetchone()
-        return row
+        return cur
         
-    def delete(self, book_id: int):
-        with bd.get_conn() as conn:
-            cursor = conn.execute(
-                'DELETE FROM books WHERE id = ? ', 
+    async def delete(self, book_id: int):
+        async for cur in self.db.get_cursor():
+            await cur.execute(
+                'DELETE FROM books WHERE id = %s', 
                  (book_id,)
             )    
-            conn.commit()
-            deleted = cursor.rowcount > 0 
+            deleted = cur.rowcount > 0 
             if deleted:
                 logger.info(f'Данные с id {book_id} успешно удалились')
             else:
                 logger.error(f'Данные с id {book_id} не найдены или произошла ошибка')
-            return deleted
+        return deleted
 
-    def update(self, book_id: int, 
+    async def update(self, book_id: int, 
         author_id: int,
         namebook: str,
         genre: str,
         pages: int,
         publisher_id: int
                ):
-        with bd.get_conn() as conn:
-            conn.execute(
+        async for cur in self.db.get_cursor():
+            cur.execute(
                 '''
                 UPDATE books 
-                SET author_id = ?, namebook = ?, genre = ?, 
-                pages = ?, publisher_id = ?
-                WHERE id = ?
+                SET author_id = %s, namebook = %s, genre = %s, 
+                pages = %s, publisher_id = %s
+                WHERE id = %s
                 ''', 
                 ( author_id, namebook, genre, pages, publisher_id, book_id)
             )
-            conn.commit()
         return self.get_by_id(book_id)

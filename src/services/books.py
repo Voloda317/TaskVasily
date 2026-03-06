@@ -1,10 +1,10 @@
-from src.repositories.books import BookRepository
+from src.repositories.books_repo import Book
 import logging
 
 logger = logging.getLogger(__name__)
 
 class BookService:
-    def __init__(self, repository: BookRepository):
+    def __init__(self, repository: Book):
         self.repository = repository
 
     def create_book(self, book_data: dict):
@@ -47,3 +47,4 @@ class BookService:
         else:
             logger.error(f'У нас беда')
         return filter_book
+    

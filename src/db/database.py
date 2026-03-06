@@ -1,24 +1,47 @@
-import sqlite3
-from contextlib import contextmanager
+import aiomysql
+import logging
 
-DATABASE_URL = "db/library.db"
+logger = logging.getLogger(__name__)
 
-class Work_db:
-    def __init__(self, DATABASE_URL):
-        self.db_work = DATABASE_URL
+class Conect():
+    def __init__(self, host, port, 
+                user, password, 
+                db, autocommit=True
+                ):
+        self.host=host
+        self.port=port
+        self.user=user 
+        self.password=password
+        self.db=db 
+        self.autocommit=autocommit
+
+    async def connect(self): 
+        try:    
+            self.conn = await aiomysql.connect(
+                host=self.host, 
+                port=self.port, 
+                user=self.user, 
+                password=self.password, 
+                db=self.db,
+                autocommit=self.autocommit
+            )
+            logger.info('Успешно подключились')
+        except: 
+            logger.info('У нас ошибка с подключением')
+
+    async def close(self):
+        try:    
+            self.conn.close()
+            logger.info('Соединение с бд закрыто')
+        except:
+            logger.error('У нас какая-то ошибка')
 
 
-    @contextmanager
-    def get_conn(self):
-        conn = sqlite3.connect(self.db_work)
-        conn.row_factory = sqlite3.Row
-        try:
-            yield conn
-        finally:
-            conn.close()
-
-
-    def create(self):
-        with self.get_conn() as conn:
-            with open("db/schema.sql", "r") as f:
-                conn.executescript(f.read())
+    async def cursor(self):
+        try:    
+            async with self.conn.cursor() as cur:
+                yield cur
+                await self.conn.commit()
+                logger.info('Успешно')
+        except:
+            logger.error('Проблема с соединением')
