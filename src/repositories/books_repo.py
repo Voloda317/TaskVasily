@@ -18,7 +18,7 @@ class Book:
         pages: int,
         publisher_id: int
         ):
-        async for cur in self.db.get_cursor():
+        async for cur in self.db.cursor():
             await cur.execute(
                 '''
                 INSERT INTO books (author_id, namebook, genre, pages, publisher_id)
@@ -32,7 +32,7 @@ class Book:
                 logger.error('Проиозошла ошибка')
 
     async def get_by_id(self, book_id: int):
-        async for cur in self.db.get_cursor():
+        async for cur in self.db.cursor():
             await cur.execute(
                 'SELECT id, author_id, namebook, genre, pages, publisher_id FROM books WHERE id = %s',
                 (book_id,)
@@ -40,7 +40,7 @@ class Book:
         return cur
         
     async def delete(self, book_id: int):
-        async for cur in self.db.get_cursor():
+        async for cur in self.db.cursor():
             await cur.execute(
                 'DELETE FROM books WHERE id = %s', 
                  (book_id,)
@@ -59,7 +59,7 @@ class Book:
         pages: int,
         publisher_id: int
                ):
-        async for cur in self.db.get_cursor():
+        async for cur in self.db.cursor():
             cur.execute(
                 '''
                 UPDATE books 
