@@ -1,18 +1,18 @@
-# from pydantic_settings import BaseSettings, SettingsConfigDict
-#
-#
-# class Settings(BaseSettings):
-#
-#     APP_TITLE: str
-#     DB_NAME: str
-#     LOG_FILE: str
-#     LOG_LEVEL: str
-#     HOST: str
-#     PORT: int
-#
-#     model_config = SettingsConfigDict(
-#         env_file=".env",
-#         env_file_encoding="utf-8"
-#     )
-#
-# settings = Settings()
+from pydantic_settings import BaseSettings
+
+
+class Settings(BaseSettings):
+    DB_HOST: str
+    DB_PORT: int
+    DB_USER: str
+    DB_PASSWORD: str
+    DB_NAME: str
+
+    LOG_LEVEL: str = "INFO"
+    LOG_FILE: str = "logs/apps.log"
+
+    class Config:
+        env_file = ".env"
+
+
+settings = Settings()

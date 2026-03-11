@@ -15,10 +15,10 @@ service = PublicherService(repo)
 router = APIRouter(prefix='/publisher', tags=['publisher'])
 
 @router.post('')
-async def create_autors(country: str, city: str,
+async def create_publicher(country: str, city: str,
             year_publicher: int):
     try:
-        publisher = await service.create_author(
+        publisher = await service.create_publisher(
             country=country,
             city=city,
             year_publicher=year_publicher
@@ -32,8 +32,8 @@ async def create_autors(country: str, city: str,
 @router.get('/{publisher_id}')
 async def get_publisher(publisher_id:int):
     try:
-        publisher = await service.create_author(publisher_id)
-        logger.info(f'Публикацию с id {publisher_id} создали')
+        publisher = await service.get_by_id(publisher_id)
+        logger.info(f'Поиск книги с id  {publisher_id} прошла успешно')
         return publisher
     except Exception:
         logger.error(f'Публикацию с id{publisher_id} не удалось создать')

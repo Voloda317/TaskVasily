@@ -5,6 +5,9 @@ from src.routers.author import router as author_router
 from src.db.config import db
 from contextlib import asynccontextmanager
 
+from src.logers.logger import setup_logging
+
+setup_logging()
 
 
 

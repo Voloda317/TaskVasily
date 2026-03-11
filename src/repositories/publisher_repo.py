@@ -28,13 +28,14 @@ class PublicherRepo:
             await cur.execute(
                 '''
                 SELECT id, country, city, year_publisher
-                FROM publisher WHERE id == %s
+                FROM publisher WHERE id = %s
                 ''', 
                 (publisher_id,)
             )
+            row = await cur.fetchone()
             if cur:
                 logger.info('Книгу с id {publisher_id} вывели')
-                return cur
+                return row
             else:
                 logger.error('У нас ошибка')
 
@@ -49,6 +50,7 @@ class PublicherRepo:
             delete = cur.rowcount > 0
             if delete:
                 logger.info(f'Уделение по id {publisher_id} успешно прошло')
+                return delete
             else:
                 logger.error('У нас с тобой ошибка')
 
@@ -64,4 +66,3 @@ class PublicherRepo:
                 ''', 
                 (country, city, year_publisher, publisher_id)
                 )
-        

@@ -12,7 +12,7 @@ class AuthorRepo:
 
     async def add(self, birth_year: int, name: str):
         async for cur in self.db.cursor():
-            cur.execute(
+            await cur.execute(
                 '''
                 INSERT INTO authors (birth_year, name)
                 VALUES (%s, %s)
@@ -20,28 +20,25 @@ class AuthorRepo:
             )
             if cur:
                 logger.info('Данные успешнозагрущились')
-                return cur.lastrowid()
+                return cur.lastrowid
             else:
-                logger.error('Какая-то проблема с данными') 
+                logger.error('Какая-то проблема с данными')
 
     async def get_by_id(self, authors_id: int):
         async for cur in self.db.cursor():
-            cur.execute(
+            await cur.execute(
                 '''
                 SELECT id, birth_year, name FROM authors
                 WHERE id = %s
-                ''', 
+                ''',
                 (authors_id,)
             )
-            if cur:
-                logger.info('Данные с id {id} успешно вывелись')
-                return cur
-            else:
-                logger.error('Пробла у нас')
+            row = await cur.fetchone()
+            return row
 
     async def delete(self, authors_id):
         async for cur in self.db.cursor(): 
-            cur.execute(
+            await  cur.execute(
                 '''
                 DELETE FROM authors WHERE id = %s
                 ''', 
@@ -50,17 +47,18 @@ class AuthorRepo:
             delete = cur.rowcount > 0
             if delete:
                 logger.info('Данные по id {authors_id} успешно удалились')
+                return delete
             else:
                 logger.error('Прозошла ошибочка, смотри код')
 
-    async def update(self, author_id: int, birth_year: int, name: str): 
-        async for cur in self.db.cursor(): 
-            cur.execute(
+    async def update(self, authors_id: int, birth_year: int, name: str):
+        async for cur in self.db.cursor():
+            await cur.execute(
                 '''
                 UPDATE authors
                 SET birth_year = %s, name = %s
                 WHERE id = %s
-                ''', 
-                (birth_year, name, author_id)
-                )
+                ''',
+                (birth_year, name, authors_id)
+            )
         

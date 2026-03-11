@@ -15,6 +15,7 @@ router = APIRouter(prefix='/books', tags=['Books'])
 
 @router.post('/')
 async def create_book(
+    author_id:int,
     namebook: str,
     genre: str,
     pages: int,
@@ -22,6 +23,7 @@ async def create_book(
 ):
     try:
         book = await service.create_book(
+            author_id=author_id,
             namebook=namebook,
             genre=genre,
             pages=pages,

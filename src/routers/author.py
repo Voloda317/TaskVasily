@@ -51,16 +51,16 @@ async def delete_author(author_id: int):
 
 
 @router.put('/{author_id}')
-async def update_author(authors_id: int, birth_year: int, name: str):
+async def update_author(author_id: int, birth_year: int, name: str):
     try:
         author = await service.update(
-            authors_id=authors_id,
+            authors_id=author_id,
             birth_year=birth_year,
             name=name
         )
 
-        logger.info(f'Автор с id {authors_id} успешно обновлён')
+        logger.info(f'Автор с id {author_id} успешно обновлён')
         return author
     except Exception:
-        logger.error(f'Не удалось обновить автора с id {authors_id}')
+        logger.error(f'Не удалось обновить автора с id {author_id}')
         raise

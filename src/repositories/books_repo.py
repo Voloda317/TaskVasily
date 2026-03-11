@@ -12,6 +12,7 @@ class Book:
 
     async def add_book(
         self,
+        author_id: int,
         namebook: str,
         genre: str,
         pages: int,
@@ -20,9 +21,9 @@ class Book:
         async for cur in self.db.cursor():
             await cur.execute(
                 '''
-                INSERT INTO books (namebook, genre, pages, publisher_id)
-                VALUES (%s, %s, %s, %s)
-                ''', (namebook, genre, pages, publisher_id)
+                INSERT INTO books (author_id, namebook, genre, pages, publisher_id)
+                VALUES (%s, %s, %s, %s, %s)
+                ''', (author_id, namebook, genre, pages, publisher_id)
             )
             if cur:
                 logger.info(f'Книга успешна добавлена')
@@ -35,8 +36,9 @@ class Book:
             await cur.execute(
                 'SELECT id, author_id, namebook, genre, pages, publisher_id FROM books WHERE id = %s',
                 (book_id,)
-            ).fetchone()
-        return cur
+            )
+            row = await cur.fetchone()
+            return row
         
     async def delete(self, book_id: int):
         async for cur in self.db.cursor():

@@ -8,7 +8,7 @@ class PublicherService:
     def __init__(self, repo:PublicherRepo):
         self.repo = repo 
 
-    async def crate_publicher(self, **book_pub): 
+    async def create_publisher(self, **book_pub):
         pub = await self.repo.add(**book_pub)
         if pub: 
             logger.info('Запись проходит успешно')
@@ -33,5 +33,5 @@ class PublicherService:
 
     async def update(self, publisher_id, **book_pub): 
         await self.repo.update(publisher_id, **book_pub)
-        return self.repo.get_by_id(publisher_id)
+        return await self.repo.get_by_id(publisher_id)
     
