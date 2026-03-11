@@ -15,7 +15,7 @@ class AuthorRepo:
             cur.execute(
                 '''
                 INSERT INTO authors (birth_year, name)
-                VALUES (?, ?)
+                VALUES (%s, %s)
                 ''', (birth_year, name)
             )
             if cur:
@@ -29,7 +29,7 @@ class AuthorRepo:
             cur.execute(
                 '''
                 SELECT id, birth_year, name FROM authors
-                WHERE id = ?
+                WHERE id = %s
                 ''', 
                 (authors_id,)
             )
@@ -43,7 +43,7 @@ class AuthorRepo:
         async for cur in self.db.cursor(): 
             cur.execute(
                 '''
-                DELETE FROM authors WHERE id = ?
+                DELETE FROM authors WHERE id = %s
                 ''', 
                 (authors_id,)
             )
@@ -58,8 +58,8 @@ class AuthorRepo:
             cur.execute(
                 '''
                 UPDATE authors
-                SET birth_year = ?, name = ?
-                WHERE id = ?
+                SET birth_year = %s, name = %s
+                WHERE id = %s
                 ''', 
                 (birth_year, name, author_id)
                 )

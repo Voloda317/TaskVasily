@@ -1,40 +1,29 @@
-from contextlib import asynccontextmanager
 from fastapi import FastAPI
-import logging
-
-from src.logers.logger import setup_logging
-from src.config import settings
 from src.routers.books import router as books_router
-from src.db.database import Connect
-
-db = Connect(
-    host="10.202.220.72",
-    port=3306,
-    user="vdsokolov",
-    password="Neh,byf96",
-    db="sokolov_test",
-    autocommit=False,
-)
+from src.routers.publisher import router as publisher_router
+from src.routers.author import router as author_router
+from src.db.config import db
+from contextlib import asynccontextmanager
 
 
-setup_logging()
-logger = logging.getLogger(__name__)
 
-
-repo = Work_db
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    repo.create()
-    logger.info('Сервер начал работу')
+    await db.connect()
     yield
-    logger.info('Сервер завершил работу')
+    await db.close()
 
-app = FastAPI(lifespan=lifespan, title=settings.APP_TITLE)
+app = FastAPI(
+    title="Books API",
+    lifespan=lifespan
+    )
+
 
 app.include_router(books_router)
-
+app.include_router(publisher_router)
+app.include_router(author_router)
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("src.main:app", host=settings.HOST, port=settings.PORT, reload=True)
+    uvicorn.run("src.main:app", host="127.0.0.1", port=8000, reload=True)

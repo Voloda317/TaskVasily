@@ -14,10 +14,10 @@ class PublicherRepo:
             year_publicher: int
             ):
         async for cur in self.db.cursor():
-            await cursor = cur.execute(
+            await cur.execute(
                 '''
                 INSERT INTO publisher (country, city, year_publicher)
-                VALUES (?, ?, ?)
+                VALUES (%s, %s, %s)
                 ''', 
                 (country, city, year_publicher)
             )
@@ -28,7 +28,7 @@ class PublicherRepo:
             await cur.execute(
                 '''
                 SELECT id, country, city, year_publisher
-                FROM publisher WHERE id == ?
+                FROM publisher WHERE id == %s
                 ''', 
                 (publisher_id,)
             )
@@ -42,7 +42,7 @@ class PublicherRepo:
         async for cur in self.db.cursor():
             await cur.execute(
                 '''
-                DELETE FROM authors WHERE id = ?
+                DELETE FROM publisher WHERE id = %s
                 ''', 
                 (publisher_id,)
             )
@@ -59,8 +59,8 @@ class PublicherRepo:
             await cur.execute(
                 '''
                 UPDATE publisher
-                SET country = ?, city = ?, year_publisher = ?
-                WHERE id = ? 
+                SET country = %s, city = %s, year_publisher = %s
+                WHERE id = %s
                 ''', 
                 (country, city, year_publisher, publisher_id)
                 )

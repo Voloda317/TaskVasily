@@ -1,4 +1,4 @@
-from db.database import Conect
+from src.db.database import Conect
 
 import logging
 
@@ -12,7 +12,6 @@ class Book:
 
     async def add_book(
         self,
-        author_id: int,
         namebook: str,
         genre: str,
         pages: int,
@@ -21,9 +20,9 @@ class Book:
         async for cur in self.db.cursor():
             await cur.execute(
                 '''
-                INSERT INTO books (author_id, namebook, genre, pages, publisher_id)
-                VALUES (%s, %s, %s, %s, %s)
-                ''', (author_id, namebook, genre, pages, publisher_id)
+                INSERT INTO books (namebook, genre, pages, publisher_id)
+                VALUES (%s, %s, %s, %s)
+                ''', (namebook, genre, pages, publisher_id)
             )
             if cur:
                 logger.info(f'Книга успешна добавлена')
@@ -48,9 +47,10 @@ class Book:
             deleted = cur.rowcount > 0 
             if deleted:
                 logger.info(f'Данные с id {book_id} успешно удалились')
+                return deleted
             else:
                 logger.error(f'Данные с id {book_id} не найдены или произошла ошибка')
-        return deleted
+
 
     async def update(self, book_id: int, 
         author_id: int,
