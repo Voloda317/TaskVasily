@@ -1,4 +1,4 @@
-from db.database import Conect
+from src.db.database import Conect
 
 import logging
 

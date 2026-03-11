@@ -1,4 +1,4 @@
-from db.database import Connect
+from src.db.database import Conect
 
 import logging
 
@@ -7,7 +7,7 @@ logger = logging.getLogger(__name__)
 
 
 class PublicherRepo: 
-    def __init__(self, db:Connect):
+    def __init__(self, db:Conect):
         self.db = db
 
     async def add(self, country: str, city: str, 
@@ -53,7 +53,7 @@ class PublicherRepo:
                 logger.error('У нас с тобой ошибка')
 
     async def update(self, publisher_id: int, country: str, 
-               city: str, year_publisher: str, 
+               city: str, year_publisher: str
                ):
         async for cur in self.db.cursor():
             await cur.execute(

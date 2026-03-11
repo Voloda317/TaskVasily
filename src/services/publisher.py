@@ -8,13 +8,8 @@ class PublicherService:
     def __init__(self, repo:PublicherRepo):
         self.repo = repo 
 
-    async def crate_publicher(self, country: str,
-                              city: str, year_publicher: int): 
-        pub = await self.repo.add(
-            country=country, 
-            city=city, 
-            year_publicher=year_publicher
-        )
+    async def crate_publicher(self, **book_pub): 
+        pub = await self.repo.add(**book_pub)
         if pub: 
             logger.info('Запись проходит успешно')
             return pub
@@ -36,14 +31,7 @@ class PublicherService:
         else: 
             logger.error('У нас ошибка')
 
-    async def update(self, publisher_id, country:str,
-                    city:str, year_publicher:int
-                    ): 
-        await self.repo.update(
-            publisher_id=publisher_id, 
-            country=country, 
-            city=city, 
-            year_publisher=year_publicher
-        )
+    async def update(self, publisher_id, **book_pub): 
+        await self.repo.update(publisher_id, **book_pub)
         return self.repo.get_by_id(publisher_id)
     

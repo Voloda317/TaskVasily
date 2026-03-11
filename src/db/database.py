@@ -28,6 +28,7 @@ class Conect():
             logger.info('Успешно подключились')
         except: 
             logger.info('У нас ошибка с подключением')
+            raise
 
     async def close(self):
         try:    
@@ -35,7 +36,7 @@ class Conect():
             logger.info('Соединение с бд закрыто')
         except:
             logger.error('У нас какая-то ошибка')
-
+            raise
 
     async def cursor(self):
         try:    
@@ -45,3 +46,4 @@ class Conect():
                 logger.info('Успешно')
         except:
             logger.error('Проблема с соединением')
+            raise

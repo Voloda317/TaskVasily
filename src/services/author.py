@@ -8,11 +8,8 @@ class AuthorService:
     def __init__(self, repo: AuthorRepo):
         self.repo = repo
 
-    async def create_author(self, birth_year: int, name: str):
-        create = self.repo.add(
-            birth_year=birth_year, 
-            name=name
-        )
+    async def create_author(self, **book_pub):
+        create = self.repo.add(**book_pub)
         return create 
     
     async def search_id(self, authors_id:int):
@@ -31,11 +28,10 @@ class AuthorService:
         else:
             logger.error('У нас прошла ошибка')
 
-    async def update(self, authors_id: int, 
-                     birth_year: int, name: str):
+    async def update(self, authors_id: int, **book_pub):
         await self.repo.update(
             authors_id=authors_id, 
-            birth_year=birth_year, 
-            name=name
+            **book_pub
         )
         return self.repo.get_by_id(authors_id)
+    

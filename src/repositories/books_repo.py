@@ -60,7 +60,7 @@ class Book:
         publisher_id: int
                ):
         async for cur in self.db.cursor():
-            cur.execute(
+            await cur.execute(
                 '''
                 UPDATE books 
                 SET author_id = %s, namebook = %s, genre = %s, 
@@ -69,4 +69,4 @@ class Book:
                 ''', 
                 ( author_id, namebook, genre, pages, publisher_id, book_id)
             )
-        return self.get_by_id(book_id)
+        return await self.get_by_id(book_id)
