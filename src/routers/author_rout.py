@@ -1,8 +1,9 @@
 from fastapi import APIRouter
 
-from src.services.author import AuthorService
+from src.services.author_services import AuthorService
 from src.repositories.author_repo import AuthorRepo
 from src.db.config import db
+from src.model.authors_model import AuthorsCreate, AuthorsResponse, AuthorsUpdate
 
 import logging
 
@@ -14,24 +15,21 @@ service = AuthorService(repo)
 router = APIRouter(prefix='/author', tags=['Author'])
 
 
-@router.post('/')
-async def create_author(birth_year: int, name: str):
+@router.post('/',  response_model=AuthorsResponse)
+async def create_author(author_data: AuthorsCreate):
     try:
-        author = await service.create_author(
-            birth_year=birth_year,
-            name=name
-        )
-        logger.info('Автор успешно создан')
+        author = await service.create_author(**author_data.model_dump())
+        logger.info('Данные пошли в сервис')
         return author
     except Exception:
         logger.error('Ошибка при создании автора')
         raise
 
 
-@router.get('/{author_id}')
+@router.get('/{author_id}', response_model=AuthorsResponse)
 async def get_author(author_id: int):
     try:
-        author = await service.search_id(author_id)
+        author = await service.get_by_id(author_id)
         logger.info(f'Автор с id {author_id} найден')
         return author
     except Exception:
@@ -50,13 +48,12 @@ async def delete_author(author_id: int):
         raise
 
 
-@router.put('/{author_id}')
-async def update_author(author_id: int, birth_year: int, name: str):
+@router.put('/{author_id}', response_model=AuthorsResponse)
+async def update_author(author_id: int,  author_data: AuthorsUpdate):
     try:
         author = await service.update(
             authors_id=author_id,
-            birth_year=birth_year,
-            name=name
+            **author_data.model_dump(exclude_unset=True)
         )
 
         logger.info(f'Автор с id {author_id} успешно обновлён')

@@ -1,7 +1,7 @@
 from fastapi import FastAPI
-from src.routers.books import router as books_router
-from src.routers.publisher import router as publisher_router
-from src.routers.author import router as author_router
+from src.routers.books_rout import router as books_router
+from src.routers.publisher_rout import router as publisher_router
+from src.routers.author_rout import router as author_router
 from src.db.config import db
 from contextlib import asynccontextmanager
 

@@ -1,5 +1,4 @@
 from src.repositories.author_repo import AuthorRepo
-
 import logging
 
 logger = logging.getLogger(__name__)
@@ -10,10 +9,15 @@ class AuthorService:
         self.repo = repo
 
     async def create_author(self, **book_pub):
-        create = await self.repo.add(**book_pub)
-        return create
+        try:
+            author_id = await self.repo.add(**book_pub)
+            logger.info('Данные пошли в слой репозитория')
+            return await self.repo.get_by_id(author_id)
+        except Exception:
+            logger.error('Проблема в сервисном слое')
+            raise
 
-    async def search_id(self, authors_id: int):
+    async def get_by_id(self, authors_id: int):
         search = await self.repo.get_by_id(authors_id)
         if search:
             logger.info('Поиск прошел успешно')
