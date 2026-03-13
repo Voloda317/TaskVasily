@@ -1,10 +1,14 @@
+from tkinter.constants import BASELINE
+
 from fastapi import APIRouter
+from fastapi.params import Depends
+from pydantic import BaseModel
 from select import select
 
 from src.db.config import db
 from src.repositories.publisher_repo import PublisherRepo
 from src.services.publisher_services import PublisherService
-from src.model.publisher_model import PublisherCreate,PublisherResponse, PublisherUpdate
+from src.model.publisher_model import PublisherCreate,PublisherResponse, PublisherUpdate, PublisherFilter
 
 import logging
 
@@ -57,3 +61,10 @@ async def update(publisher_id: int, publisher_data: PublisherUpdate):
     except Exception:
         logger.error(f'Запись c id {publisher_id} не удалось обновить')
         raise
+
+@router.get('/', response_model=list[PublisherResponse])
+async def filter_pub(filters: PublisherFilter = Depends()):
+    result = await service.filter(
+        **filters.model_dump(exclude_unset=True)
+    )
+    return result

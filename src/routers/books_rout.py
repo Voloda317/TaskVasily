@@ -1,9 +1,10 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
+from fastapi.params import Depends
 
 from src.repositories.books_repo import Book
 from src.services.books_services import BookService
 from src.db.config import db
-from src.model.books_model import BookCreate, BookResponse, BookUpdate
+from src.model.books_model import BookCreate, BookResponse, BookUpdate, BookFilter
 import logging
 
 logger = logging.getLogger(__name__)
@@ -56,3 +57,16 @@ async def update(book_id: int, book_data: BookUpdate):
     except Exception:
         logger.error(f'Ошибка при обновлении книги {book_id}')
         raise
+
+@router.get('/', response_model=list[BookResponse])
+async def filter_book(filters: BookFilter = Depends()):
+    try:
+        book = await service.filter_book(
+            **filters.model_dump(exclude_unset=True)
+        )
+        logger.info('Данные прошли успешно')
+        return book
+    except Exception as e:
+        logger.error(f'Проблем с данными, ошибка {e}')
+        raise
+

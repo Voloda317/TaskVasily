@@ -1,3 +1,5 @@
+from tkinter.constants import MOVETO
+
 from pydantic import BaseModel
 from typing import Optional
 
@@ -20,3 +22,11 @@ class BookUpdate(BaseModel):
     genre: Optional[str]
     pages: Optional[int]
     publisher_id: Optional[int]
+
+class BookFilter(BaseModel):
+    id: Optional[int] = None
+    author_id: Optional[int] = None
+    namebook: Optional[str] = None
+    genre: Optional[str] = None
+    pages: Optional[int] = None
+    publisher_id: Optional[int] = None

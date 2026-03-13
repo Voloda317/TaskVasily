@@ -36,4 +36,12 @@ class PublisherService:
     async def update(self, publisher_id, **publisher_pub):
         await self.repo.update(publisher_id, **publisher_pub)
         return await self.repo.get_by_id(publisher_id)
-    
+
+    async def filter(self, **filters):
+        try:
+            publisher_filter = await self.filter(**filters)
+            logger.info('Данные в сервисе прошли успешно')
+            return publisher_filter
+        except Exception as e:
+            logger.error(f'Проблема с данными в сервисе, ошибка {e}')
+            raise

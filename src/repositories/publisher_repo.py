@@ -1,6 +1,7 @@
 from src.db.database import Conect
 import logging
-
+from src.model.publisher_model import PublisherFilter
+from typing import Optional
 logger = logging.getLogger(__name__)
 
 class PublisherRepo:
@@ -61,3 +62,45 @@ class PublisherRepo:
                 ''',
                 (country, city, year_publisher, publisher_id)
             )
+
+
+    async def filter(self, id: Optional[int] = None,
+        country: Optional[str] = None,
+        city: Optional[str] = None,
+        year_publisher: Optional[int] = None):
+        query = (
+            '''
+            SELECT id, country, city, year_publisher
+            FROM publishers
+            WHERE 1=1
+            '''
+        )
+        param = []
+        if id:
+            query = 'AND id = %s'
+            param.append(id)
+        if country:
+            query = 'AND country = %s'
+            param.append(country)
+        if city:
+            query = 'AND city = %s'
+            param.append(city)
+        if year_publisher:
+            query = 'AND year_publisher = %s'
+            param.append(year_publisher)
+
+        async for cur in self.db.cursor():
+            await cur.execute(query, param)
+            rows = cur.fetchall
+            publishers = []
+            for row in rows:
+                publishers.append({
+                    'id': row[0],
+                    'country': row[1],
+                    'city': row[2],
+                    'year_publisher': row[3]
+                })
+            return publishers
+
+
+

@@ -29,4 +29,13 @@ class BookService:
     async def update(self, book_id: int, **book_sl):
         await self.book_repo.update(book_id=book_id,**book_sl)
         return await self.book_repo.get_by_id(book_id)
-    
+
+    async def filter_book(self, **book_sl):
+        try:
+            books = await self.book_repo.filter_book(**book_sl)
+            logger.info('Фильтрация прошла хорошо')
+            return books
+        except Exception as e:
+            logger.error(f'Ошибка при фильтрации: {e}')
+            raise
+
