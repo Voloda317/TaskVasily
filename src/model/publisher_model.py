@@ -13,9 +13,9 @@ class PublisherResponse(PublisherModel):
     id: int
 
 class PublisherUpdate(BaseModel):
-    country: Optional[str]
-    city: Optional[str]
-    year_publisher: Optional[int]
+    country: Optional[str] = None
+    city: Optional[str] = None
+    year_publisher: Optional[int] = None
 
 
 class PublisherFilter(BaseModel):
@@ -23,3 +23,4 @@ class PublisherFilter(BaseModel):
     country: Optional[str] = None
     city: Optional[str] = None
     year_publisher: Optional[int] = None
+

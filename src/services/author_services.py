@@ -38,3 +38,12 @@ class AuthorService:
     async def update(self, authors_id: int, **book_pub):
         await self.repo.update(authors_id=authors_id, **book_pub)
         return await self.repo.get_by_id(authors_id)
+
+    async def filter_author_ser(self, **authors_filter):
+        try:
+            authors = await self.repo.filter_author(**authors_filter)
+            logger.info('Данные в сервисном слое успешно')
+            return authors
+        except Exception as e:
+            logger.error(f'У нас ошибка в сервисном слое {e}')
+            raise

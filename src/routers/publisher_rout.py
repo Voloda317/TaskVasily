@@ -64,7 +64,7 @@ async def update(publisher_id: int, publisher_data: PublisherUpdate):
 
 @router.get('/', response_model=list[PublisherResponse])
 async def filter_pub(filters: PublisherFilter = Depends()):
-    result = await service.filter(
+    result = await service.filter_pub(
         **filters.model_dump(exclude_unset=True)
     )
     return result

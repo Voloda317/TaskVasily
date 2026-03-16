@@ -1,9 +1,10 @@
 from fastapi import APIRouter
+from fastapi.params import Depends
 
 from src.services.author_services import AuthorService
 from src.repositories.author_repo import AuthorRepo
 from src.db.config import db
-from src.model.authors_model import AuthorsCreate, AuthorsResponse, AuthorsUpdate
+from src.model.authors_model import AuthorsCreate, AuthorsResponse, AuthorsUpdate, FilterAuthor
 
 import logging
 
@@ -60,4 +61,14 @@ async def update_author(author_id: int,  author_data: AuthorsUpdate):
         return author
     except Exception:
         logger.error(f'Не удалось обновить автора с id {author_id}')
+        raise
+
+@router.get('/', response_model=list[AuthorsResponse])
+async def filter_author_rout(authors_fil: FilterAuthor = Depends()):
+    try:
+        authors = await service.filter_author_ser(**authors_fil.model_dump(exclude_unset=True))
+        logger.info('В эндпоитах все хорошо')
+        return authors
+    except Exception as e:
+        logger.error(f'У нас ошибка {e}')
         raise

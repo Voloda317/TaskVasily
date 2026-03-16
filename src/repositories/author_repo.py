@@ -1,5 +1,9 @@
+from docs.conf import author
+
 from src.db.database import Conect
 import logging
+
+from typing import Optional
 
 logger = logging.getLogger(__name__)
 
@@ -59,3 +63,35 @@ class AuthorRepo:
                 ''',
                 (birth_year, name, authors_id)
             )
+
+
+    async def filter_author(self, id: Optional[int] = None,
+        birth_year: Optional[int] = None,
+        name: Optional[str] = None):
+        query = '''
+            SELECT id, birth_year, name
+            FROM authors
+            WHERE 1=1
+                '''
+        param = []
+        if id:
+            query += 'AND id = %s'
+            param.append(id)
+        if birth_year:
+            query += 'AND birth_year = %s'
+            param.append(birth_year)
+        if name:
+            query += 'AND name = %s'
+            param.append(name)
+
+        async for cur in self.db.cursor():
+            await cur.execute(query, param)
+            rows = await cur.fetchall()
+            authors = []
+            for row in rows:
+                authors.append({
+                    'id': row[0],
+                    'birth_year': row[1],
+                    'name': row[2]
+                })
+            return authors

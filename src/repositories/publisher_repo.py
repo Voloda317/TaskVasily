@@ -64,7 +64,7 @@ class PublisherRepo:
             )
 
 
-    async def filter(self, id: Optional[int] = None,
+    async def filter_pub(self, id: Optional[int] = None,
         country: Optional[str] = None,
         city: Optional[str] = None,
         year_publisher: Optional[int] = None):
@@ -77,21 +77,21 @@ class PublisherRepo:
         )
         param = []
         if id:
-            query = 'AND id = %s'
+            query += ' AND id = %s'
             param.append(id)
         if country:
-            query = 'AND country = %s'
+            query += ' AND country = %s'
             param.append(country)
         if city:
-            query = 'AND city = %s'
+            query += ' AND city = %s'
             param.append(city)
         if year_publisher:
-            query = 'AND year_publisher = %s'
+            query += ' AND year_publisher = %s'
             param.append(year_publisher)
 
         async for cur in self.db.cursor():
             await cur.execute(query, param)
-            rows = cur.fetchall
+            rows = await cur.fetchall()
             publishers = []
             for row in rows:
                 publishers.append({
